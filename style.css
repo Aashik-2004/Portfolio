@@ -130,10 +130,11 @@ header .navbar ul li a:hover {
 }
 
 /* ===== Hamburger Menu ===== */
+/* ===== Hamburger Menu ===== */
 #menu {
-  font-size: 2.5rem;
+  font-size: 3.2rem;   /* 👈 bigger size */
   cursor: pointer;
-  color: #16266d;
+  color: red;          /* 👈 red color */
   display: none;
   transition: transform 0.3s ease-in-out;
 }
@@ -148,12 +149,18 @@ header .navbar ul li a:hover {
     display: block;
   }
 
+  /* remove the white bar that sits behind the header on small screens */
+  header {
+    background: transparent !important;
+    box-shadow: none !important;
+  }
+
   header .navbar {
     position: fixed;
-    top: 6rem;
+    top: 6rem; /* keep your original top spacing */
     right: -100%;
     width: 70%;
-    height: 100vh;
+    height: calc(100vh - 6rem); /* keep the menu inside viewport below the top gap */
     background: linear-gradient(180deg, #16266d, #0e2431);
     display: flex;
     justify-content: flex-start;
@@ -162,6 +169,9 @@ header .navbar ul li a:hover {
     flex-direction: column;
     box-shadow: -2px 0 12px rgba(0, 0, 0, 0.2);
     transition: right 0.4s ease-in-out;
+    z-index: 999; /* ensure the sliding panel sits above other page content */
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
   }
 
   header .navbar.nav-toggle {
@@ -192,6 +202,7 @@ header .navbar ul li a:hover {
     border-radius: 0.4rem;
   }
 }
+
 
 /* hamburger icon ends */
 
